@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FoodBridge — NGO Dashboard</title>
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+<div class="app-shell">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">FB</div>
+      <div class="brand-name">FoodBridge<span>NGO</span></div>
+    </div>
+    <nav class="nav-group">
+      <div class="nav-label">Menu</div>
+      <a class="nav-link active" href="ngo.html"><span class="ico">▣</span>Browse Donations</a>
+      <a class="nav-link" href="#requests"><span class="ico">📨</span>My Requests</a>
+      <a class="nav-link" href="#profile"><span class="ico">🏷</span>Organization Profile</a>
+    </nav>
+    <div class="sidebar-foot">
+      Anbu Trust<br>Reg. no. NGO-4471 • Active
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <span class="role-badge"><span class="dot"></span>NGO</span>
+        <h1 style="margin-top:10px; font-size:26px;">Available donations near you</h1>
+        <p class="text-soft" style="font-size:13.5px;">Claim what you can distribute before it expires.</p>
+      </div>
+      <div class="user-chip">
+        <div class="avatar">AT</div>
+        <div>
+          <div style="font-size:13px; font-weight:600;">Anbu Trust</div>
+          <div style="font-size:11px; color:var(--ink-soft);">Chennai, TN</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stat-strip">
+      <div class="stat-card"><div class="num">12</div><div class="label">Available nearby</div></div>
+      <div class="stat-card accent-harvest"><div class="num">3</div><div class="label">Pending requests</div></div>
+      <div class="stat-card accent-leaf"><div class="num">1</div><div class="label">Accepted, awaiting pickup</div></div>
+      <div class="stat-card"><div class="num">64</div><div class="label">Total received</div></div>
+    </div>
+
+    <div class="section-head">
+      <h2>Browse available donations</h2>
+      <form id="donation-filters" style="display:flex; gap:8px;">
+        <select id="filter-food-type">
+          <option value="all">All food types</option>
+          <option value="meal">Cooked meal</option>
+          <option value="produce">Produce</option>
+          <option value="packaged">Packaged goods</option>
+        </select>
+        <select>
+          <option>Nearest first</option>
+          <option>Expiring soonest</option>
+          <option>Largest quantity</option>
+        </select>
+      </form>
+    </div>
+
+    <div class="crate-grid" id="donations">
+
+      <div class="crate-tag" data-food-type="meal">
+        <div class="crate-tag-top">
+          <div>
+            <div class="crate-tag-food">Vegetable Biryani</div>
+            <div class="crate-tag-id">DON-00842 · Green Leaf Kitchen</div>
+          </div>
+          <span class="stamp stamp-available">Available</span>
+        </div>
+        <div class="crate-tag-meta">
+          <div><strong>40 plates</strong> · cooked meal</div>
+          <div>📍 12 Anna Salai · 2.1 km away</div>
+        </div>
+        <div class="freshness">
+          <div class="freshness-label"><span>Freshness</span><span>5h 20m left</span></div>
+          <div class="freshness-bar"><div class="freshness-fill fresh" style="width:78%;"></div></div>
+        </div>
+        <div class="crate-tag-actions">
+          <button class="btn btn-primary btn-sm" data-action="claim">Request pickup</button>
+        </div>
+      </div>
+
+      <div class="crate-tag" data-food-type="packaged">
+        <div class="crate-tag-top">
+          <div>
+            <div class="crate-tag-food">Bread &amp; Bakery Assortment</div>
+            <div class="crate-tag-id">DON-00839 · Sunrise Bakers</div>
+          </div>
+          <span class="stamp stamp-available">Available</span>
+        </div>
+        <div class="crate-tag-meta">
+          <div><strong>15 kg</strong> · packaged goods</div>
+          <div>📍 T Nagar · 4.6 km away</div>
+        </div>
+        <div class="freshness">
+          <div class="freshness-label"><span>Freshness</span><span>1h 10m left</span></div>
+          <div class="freshness-bar"><div class="freshness-fill urgent" style="width:22%;"></div></div>
+        </div>
+        <div class="crate-tag-actions">
+          <button class="btn btn-primary btn-sm" data-action="claim">Request pickup</button>
+        </div>
+      </div>
+
+      <div class="crate-tag" data-food-type="produce">
+        <div class="crate-tag-food" style="margin-bottom:2px;">Mixed Vegetable Crates</div>
+        <div class="crate-tag-id" style="margin-bottom:10px;">DON-00850 · Fresh Fields Market</div>
+        <span class="stamp stamp-available" style="position:absolute; top:16px; right:16px;">Available</span>
+        <div class="crate-tag-meta">
+          <div><strong>60 kg</strong> · produce</div>
+          <div>📍 Guindy · 3.3 km away</div>
+        </div>
+        <div class="freshness">
+          <div class="freshness-label"><span>Freshness</span><span>14h left</span></div>
+          <div class="freshness-bar"><div class="freshness-fill fresh" style="width:95%;"></div></div>
+        </div>
+        <div class="crate-tag-actions">
+          <button class="btn btn-primary btn-sm" data-action="claim">Request pickup</button>
+        </div>
+      </div>
+
+      <div class="crate-tag" data-food-type="meal">
+        <div class="crate-tag-top">
+          <div>
+            <div class="crate-tag-food">Sambar &amp; Rice</div>
+            <div class="crate-tag-id">DON-00845 · Green Leaf Kitchen</div>
+          </div>
+          <span class="stamp stamp-available">Available</span>
+        </div>
+        <div class="crate-tag-meta">
+          <div><strong>25 plates</strong> · cooked meal</div>
+          <div>📍 12 Anna Salai · 2.1 km away</div>
+        </div>
+        <div class="freshness">
+          <div class="freshness-label"><span>Freshness</span><span>9h 45m left</span></div>
+          <div class="freshness-bar"><div class="freshness-fill fresh" style="width:92%;"></div></div>
+        </div>
+        <div class="crate-tag-actions">
+          <button class="btn btn-primary btn-sm" data-action="claim">Request pickup</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="section-head" id="requests">
+      <h2>My requests</h2>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Request</th><th>Donation</th><th>Requested</th><th>Status</th><th></th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="cell-mono">REQ-2210</td>
+            <td>Bread &amp; Bakery Assortment</td>
+            <td class="cell-mono">Today, 2:14 PM</td>
+            <td><span class="stamp stamp-pending">Pending</span></td>
+            <td class="row-actions"><button class="btn btn-ghost btn-sm">Withdraw</button></td>
+          </tr>
+          <tr>
+            <td class="cell-mono">REQ-2198</td>
+            <td>Mixed Fruit Crates</td>
+            <td class="cell-mono">Yesterday, 5:02 PM</td>
+            <td><span class="stamp stamp-accepted">Accepted</span></td>
+            <td class="row-actions"><button class="btn btn-ghost btn-sm">Details</button></td>
+          </tr>
+          <tr>
+            <td class="cell-mono">REQ-2177</td>
+            <td>Rice &amp; Curry Combo</td>
+            <td class="cell-mono">Mon, 1:40 PM</td>
+            <td><span class="stamp stamp-rejected">Rejected</span></td>
+            <td class="row-actions"><button class="btn btn-ghost btn-sm">Details</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+</div>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>

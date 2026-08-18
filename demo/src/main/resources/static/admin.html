@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FoodBridge — Admin Dashboard</title>
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+<div class="app-shell">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">FB</div>
+      <div class="brand-name">FoodBridge<span>Admin</span></div>
+    </div>
+    <nav class="nav-group">
+      <div class="nav-label">Overview</div>
+      <a class="nav-link active" href="admin.html"><span class="ico">▣</span>Dashboard</a>
+      <div class="nav-label">Manage</div>
+      <a class="nav-link" href="#donors"><span class="ico">🍱</span>Donors</a>
+      <a class="nav-link" href="#ngos"><span class="ico">🤝</span>NGOs</a>
+      <a class="nav-link" href="#donations"><span class="ico">📦</span>Donations</a>
+      <a class="nav-link" href="#requests"><span class="ico">📨</span>Requests</a>
+    </nav>
+    <div class="sidebar-foot">
+      Admin · S. Priya<br>Full access
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <span class="role-badge"><span class="dot"></span>ADMIN</span>
+        <h1 style="margin-top:10px; font-size:26px;">Network overview</h1>
+        <p class="text-soft" style="font-size:13.5px;">Donors, NGOs, donations, and requests across the platform.</p>
+      </div>
+      <div class="user-chip">
+        <div class="avatar">SP</div>
+        <div>
+          <div style="font-size:13px; font-weight:600;">S. Priya</div>
+          <div style="font-size:11px; color:var(--ink-soft);">Admin</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stat-strip">
+      <div class="stat-card"><div class="num">128</div><div class="label">Registered donors</div></div>
+      <div class="stat-card"><div class="num">54</div><div class="label">Registered NGOs</div></div>
+      <div class="stat-card accent-harvest"><div class="num">37</div><div class="label">Active donations</div></div>
+      <div class="stat-card accent-signal"><div class="num">6</div><div class="label">Requests pending review</div></div>
+    </div>
+
+    <div class="section-head" id="donors">
+      <h2>Donors</h2>
+      <button class="btn btn-secondary btn-sm">+ Add donor</button>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Donor</th><th>FSSAI license</th><th>City</th><th>Donations</th><th>Status</th><th></th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Green Leaf Kitchen</td>
+            <td class="cell-mono">FSSAI-11828833</td>
+            <td>Chennai</td>
+            <td>21</td>
+            <td><span class="stamp stamp-available">Active</span></td>
+            <td class="row-actions"><button class="btn btn-ghost btn-sm">View</button></td>
+          </tr>
+          <tr>
+            <td>Sunrise Bakers</td>
+            <td class="cell-mono">FSSAI-11004421</td>
+            <td>Chennai</td>
+            <td>9</td>
+            <td><span class="stamp stamp-available">Active</span></td>
+            <td class="row-actions"><button class="btn btn-ghost btn-sm">View</button></td>
+          </tr>
+          <tr>
+            <td>Fresh Fields Market</td>
+            <td class="cell-mono">FSSAI-11772290</td>
+            <td>Chennai</td>
+            <td>4</td>
+            <td><span class="stamp stamp-completed">Inactive</span></td>
+            <td class="row-actions"><button class="btn btn-ghost btn-sm">View</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-head" id="ngos">
+      <h2>NGOs</h2>
+      <button class="btn btn-secondary btn-sm">+ Add NGO</button>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>NGO</th><th>Registration no.</th><th>City</th><th>Requests made</th><th>Status</th><th></th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Anbu Trust</td>
+            <td class="cell-mono">NGO-4471</td>
+            <td>Chennai</td>
+            <td>64</td>
+            <td><span class="stamp stamp-available">Active</span></td>
+            <td class="row-actions"><button class="btn btn-ghost btn-sm">View</button></td>
+          </tr>
+          <tr>
+            <td>Sahaya Foundation</td>
+            <td class="cell-mono">NGO-3390</td>
+            <td>Chennai</td>
+            <td>41</td>
+            <td><span class="stamp stamp-available">Active</span></td>
+            <td class="row-actions"><button class="btn btn-ghost btn-sm">View</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-head" id="donations">
+      <h2>Recent donations</h2>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>ID</th><th>Food type</th><th>Donor</th><th>Quantity</th><th>Status</th><th></th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="cell-mono">DON-00850</td>
+            <td>Mixed Vegetable Crates</td>
+            <td>Fresh Fields Market</td>
+            <td>60 kg</td>
+            <td><span class="stamp stamp-available">Available</span></td>
+            <td class="row-actions"><button class="btn btn-ghost btn-sm">View</button></td>
+          </tr>
+          <tr>
+            <td class="cell-mono">DON-00845</td>
+            <td>Sambar &amp; Rice</td>
+            <td>Green Leaf Kitchen</td>
+            <td>25 plates</td>
+            <td><span class="stamp stamp-available">Available</span></td>
+            <td class="row-actions"><button class="btn btn-ghost btn-sm">View</button></td>
+          </tr>
+          <tr>
+            <td class="cell-mono">DON-00842</td>
+            <td>Vegetable Biryani</td>
+            <td>Green Leaf Kitchen</td>
+            <td>40 plates</td>
+            <td><span class="stamp stamp-available">Available</span></td>
+            <td class="row-actions"><button class="btn btn-ghost btn-sm">View</button></td>
+          </tr>
+          <tr>
+            <td class="cell-mono">DON-00839</td>
+            <td>Bread &amp; Bakery Assortment</td>
+            <td>Sunrise Bakers</td>
+            <td>15 kg</td>
+            <td><span class="stamp stamp-claimed">Claimed</span></td>
+            <td class="row-actions"><button class="btn btn-ghost btn-sm">View</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-head" id="requests">
+      <h2>Requests needing attention</h2>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Request</th><th>NGO</th><th>Donation</th><th>Requested</th><th>Status</th><th></th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="cell-mono">REQ-2210</td>
+            <td>Anbu Trust</td>
+            <td>Bread &amp; Bakery Assortment</td>
+            <td class="cell-mono">Today, 2:14 PM</td>
+            <td><span class="stamp stamp-pending">Pending</span></td>
+            <td class="row-actions">
+              <button class="btn btn-secondary btn-sm">Accept</button>
+              <button class="btn btn-ghost btn-sm">Reject</button>
+            </td>
+          </tr>
+          <tr>
+            <td class="cell-mono">REQ-2209</td>
+            <td>Sahaya Foundation</td>
+            <td>Mixed Vegetable Crates</td>
+            <td class="cell-mono">Today, 1:02 PM</td>
+            <td><span class="stamp stamp-pending">Pending</span></td>
+            <td class="row-actions">
+              <button class="btn btn-secondary btn-sm">Accept</button>
+              <button class="btn btn-ghost btn-sm">Reject</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+</div>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>

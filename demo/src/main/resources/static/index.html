@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FoodBridge — Sign in</title>
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+
+<div class="auth-wrap">
+  <div class="auth-hero">
+    <div>
+      <div class="brand">
+        <div class="brand-mark">FB</div>
+        <div class="brand-name">FoodBridge<span>Redistribution Network</span></div>
+      </div>
+      <h1 style="margin-top:56px;">Surplus food finds<br>a table before it finds a bin.</h1>
+      <p class="lede">Donors log what's ready for pickup, NGOs claim what they can use, and admins keep the whole exchange honest and on time.</p>
+      <div class="hero-tags">
+        <span class="stamp">Real-time availability</span>
+        <span class="stamp">Expiry-aware</span>
+        <span class="stamp">Verified NGOs</span>
+      </div>
+    </div>
+    <p class="text-soft" style="color:#B9CBB2; font-size:12px;">© 2026 FoodBridge — a community food redistribution system</p>
+  </div>
+
+  <div class="auth-panel">
+    <div class="auth-card">
+      <p class="eyebrow">Sign in</p>
+      <h2 style="font-size:24px; margin-top:6px;">Welcome back</h2>
+      <p class="text-soft" style="font-size:13.5px; margin-top:6px;">Choose your role to continue.</p>
+
+      <div class="role-picker">
+        <div class="role-option selected" data-role="donor">
+          <span class="ico">🍱</span>Donor
+        </div>
+        <div class="role-option" data-role="ngo">
+          <span class="ico">🤝</span>NGO
+        </div>
+        <div class="role-option" data-role="admin">
+          <span class="ico">🛠️</span>Admin
+        </div>
+      </div>
+
+      <form id="login-form" onsubmit="event.preventDefault(); alert('Mock sign-in — wire this to POST /api/auth/login');">
+        <input type="hidden" id="selected-role" value="donor">
+        <div class="form-field" style="margin-bottom:14px;">
+          <label for="phone">Phone number</label>
+          <input type="tel" id="phone" placeholder="98765 43210" required>
+        </div>
+        <div class="form-field" style="margin-bottom:18px;">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Sign in</button>
+      </form>
+
+      <p class="text-soft" style="font-size:12.5px; margin-top:16px; text-align:center;">
+        New here? <a href="#" style="color:var(--leaf-dark); font-weight:600; text-decoration:none;">Register your organization</a>
+      </p>
+
+      <div style="margin-top:26px; padding-top:16px; border-top:1px solid var(--line); display:flex; gap:8px; font-size:12px;">
+        <a href="donor.html" class="btn btn-secondary btn-sm">Preview Donor UI</a>
+        <a href="ngo.html" class="btn btn-secondary btn-sm">Preview NGO UI</a>
+        <a href="admin.html" class="btn btn-secondary btn-sm">Preview Admin UI</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>

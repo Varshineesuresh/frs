@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FoodBridge — Donor Dashboard</title>
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+<div class="app-shell">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">FB</div>
+      <div class="brand-name">FoodBridge<span>Donor</span></div>
+    </div>
+    <nav class="nav-group">
+      <div class="nav-label">Menu</div>
+      <a class="nav-link active" href="donor.html"><span class="ico">▣</span>Dashboard</a>
+      <a class="nav-link" href="#donations"><span class="ico">🍱</span>My Donations</a>
+      <a class="nav-link" href="#profile"><span class="ico">🏷</span>Organization Profile</a>
+    </nav>
+    <div class="sidebar-foot">
+      Green Leaf Kitchen<br>FSSAI • Active
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <span class="role-badge"><span class="dot"></span>DONOR</span>
+        <h1 style="margin-top:10px; font-size:26px;">Good afternoon, Green Leaf Kitchen</h1>
+        <p class="text-soft" style="font-size:13.5px;">Here's what's happening with your donations today.</p>
+      </div>
+      <div class="user-chip">
+        <div class="avatar">GL</div>
+        <div>
+          <div style="font-size:13px; font-weight:600;">Green Leaf Kitchen</div>
+          <div style="font-size:11px; color:var(--ink-soft);">Chennai, TN</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stat-strip">
+      <div class="stat-card"><div class="num">3</div><div class="label">Available</div></div>
+      <div class="stat-card accent-harvest"><div class="num">2</div><div class="label">Claimed</div></div>
+      <div class="stat-card accent-leaf"><div class="num">18</div><div class="label">Completed</div></div>
+      <div class="stat-card accent-signal"><div class="num">1</div><div class="label">Expiring soon</div></div>
+    </div>
+
+    <div class="section-head">
+      <h2>My donations</h2>
+      <button class="btn btn-primary" id="toggle-donation-form">+ New donation</button>
+    </div>
+
+    <div class="panel" id="donation-form-panel" style="display:none; margin-bottom:24px;">
+      <p class="eyebrow">New donation</p>
+      <h3 style="margin:4px 0 16px;">List surplus food for pickup</h3>
+      <form class="form-grid" id="donation-form">
+        <div class="form-field">
+          <label for="food_type">Food type</label>
+          <input type="text" id="food_type" placeholder="e.g. Vegetable biryani" required>
+        </div>
+        <div class="form-field">
+          <label for="quantity">Quantity</label>
+          <div style="display:flex; gap:8px;">
+            <input type="number" id="quantity" placeholder="40" required style="flex:1;">
+            <select id="unit" style="flex:1;">
+              <option>plates</option>
+              <option>kg</option>
+              <option>packets</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-field full">
+          <label for="description">Description</label>
+          <textarea id="description" placeholder="Freshly cooked, prepared this afternoon. Contains dairy."></textarea>
+        </div>
+        <div class="form-field">
+          <label for="pickup_location">Pickup location</label>
+          <input type="text" id="pickup_location" placeholder="12 Anna Salai, Chennai" required>
+        </div>
+        <div class="form-field">
+          <label for="expiry">Best before</label>
+          <input type="datetime-local" id="expiry" required>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" onclick="document.getElementById('donation-form-panel').style.display='none';">Cancel</button>
+          <button type="submit" class="btn btn-primary">Publish donation</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="crate-grid" id="donations">
+
+      <div class="crate-tag">
+        <div class="crate-tag-top">
+          <div>
+            <div class="crate-tag-food">Vegetable Biryani</div>
+            <div class="crate-tag-id">DON-00842</div>
+          </div>
+          <span class="stamp stamp-available">Available</span>
+        </div>
+        <div class="crate-tag-meta">
+          <div><strong>40 plates</strong> · cooked meal</div>
+          <div>📍 12 Anna Salai, Chennai</div>
+        </div>
+        <div class="freshness">
+          <div class="freshness-label"><span>Freshness</span><span>5h 20m left</span></div>
+          <div class="freshness-bar"><div class="freshness-fill fresh" style="width:78%;"></div></div>
+        </div>
+        <div class="crate-tag-actions">
+          <button class="btn btn-secondary btn-sm">View requests</button>
+          <button class="btn btn-danger btn-sm" data-action="cancel">Cancel</button>
+        </div>
+      </div>
+
+      <div class="crate-tag">
+        <div class="crate-tag-top">
+          <div>
+            <div class="crate-tag-food">Bread &amp; Bakery Assortment</div>
+            <div class="crate-tag-id">DON-00839</div>
+          </div>
+          <span class="stamp stamp-claimed">Claimed</span>
+        </div>
+        <div class="crate-tag-meta">
+          <div><strong>15 kg</strong> · packaged goods</div>
+          <div>📍 12 Anna Salai, Chennai</div>
+        </div>
+        <div class="freshness">
+          <div class="freshness-label"><span>Freshness</span><span>1h 10m left</span></div>
+          <div class="freshness-bar"><div class="freshness-fill urgent" style="width:22%;"></div></div>
+        </div>
+        <div class="crate-tag-actions">
+          <button class="btn btn-secondary btn-sm">Claimed by Anbu Trust</button>
+        </div>
+      </div>
+
+      <div class="crate-tag">
+        <div class="crate-tag-top">
+          <div>
+            <div class="crate-tag-food">Sambar &amp; Rice</div>
+            <div class="crate-tag-id">DON-00845</div>
+          </div>
+          <span class="stamp stamp-available">Available</span>
+        </div>
+        <div class="crate-tag-meta">
+          <div><strong>25 plates</strong> · cooked meal</div>
+          <div>📍 12 Anna Salai, Chennai</div>
+        </div>
+        <div class="freshness">
+          <div class="freshness-label"><span>Freshness</span><span>9h 45m left</span></div>
+          <div class="freshness-bar"><div class="freshness-fill fresh" style="width:92%;"></div></div>
+        </div>
+        <div class="crate-tag-actions">
+          <button class="btn btn-secondary btn-sm">View requests</button>
+          <button class="btn btn-danger btn-sm" data-action="cancel">Cancel</button>
+        </div>
+      </div>
+
+      <div class="crate-tag">
+        <div class="crate-tag-top">
+          <div>
+            <div class="crate-tag-food">Mixed Fruit Crates</div>
+            <div class="crate-tag-id">DON-00801</div>
+          </div>
+          <span class="stamp stamp-completed">Completed</span>
+        </div>
+        <div class="crate-tag-meta">
+          <div><strong>30 kg</strong> · produce</div>
+          <div>📍 12 Anna Salai, Chennai</div>
+        </div>
+        <div class="freshness">
+          <div class="freshness-label"><span>Freshness</span><span>Picked up</span></div>
+          <div class="freshness-bar"><div class="freshness-fill fresh" style="width:0%;"></div></div>
+        </div>
+        <div class="crate-tag-actions">
+          <button class="btn btn-secondary btn-sm">View receipt</button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>

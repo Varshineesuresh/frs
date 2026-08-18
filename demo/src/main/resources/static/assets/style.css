@@ -1,0 +1,561 @@
+/* ==========================================================================
+   Food Redistribution & Donation Management — Design System
+   Signature idea: donations are shown as "crate tags" — the paper labels
+   stapled to real produce crates — with a freshness meter standing in for
+   how a market worker eyeballs how much time a crate has left.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* Color */
+  --ink: #21301F;
+  --ink-soft: #4B5A45;
+  --paper: #EEF1E2;
+  --paper-2: #E3E7D3;
+  --panel: #FBFAF3;
+  --leaf: #2F6D3B;
+  --leaf-dark: #234F2B;
+  --harvest: #D89A3C;
+  --harvest-dark: #A8721F;
+  --signal: #B8412F;
+  --signal-dark: #8C2F21;
+  --crate: #8A6B4A;
+  --crate-line: #C9C2A8;
+  --line: #D6D2BC;
+  --white: #FFFFFF;
+
+  /* Type */
+  --font-display: 'Fraunces', serif;
+  --font-body: 'IBM Plex Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  /* Layout */
+  --radius: 6px;
+  --radius-lg: 10px;
+  --sidebar-w: 232px;
+  --shadow-card: 0 1px 0 rgba(33,48,31,0.06), 0 4px 14px rgba(33,48,31,0.06);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  margin: 0 0 4px 0;
+  letter-spacing: -0.01em;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.text-soft { color: var(--ink-soft); }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+/* ==========================================================================
+   App shell
+   ========================================================================== */
+
+.app-shell {
+  display: grid;
+  grid-template-columns: var(--sidebar-w) 1fr;
+  min-height: 100vh;
+}
+
+/* ---- Sidebar --------------------------------------------------------- */
+
+.sidebar {
+  background: var(--leaf-dark);
+  color: #EAF1E4;
+  padding: 22px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-mark {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: var(--harvest);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--leaf-dark);
+  flex-shrink: 0;
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+.brand-name span { display: block; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; color: #B9CBB2; text-transform: uppercase; font-weight: 400; }
+
+.nav-group { display: flex; flex-direction: column; gap: 2px; }
+.nav-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #94AA8C;
+  margin: 10px 10px 6px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: #DCE8D5;
+  font-size: 14px;
+  font-weight: 500;
+}
+.nav-link:hover { background: rgba(255,255,255,0.06); }
+.nav-link.active { background: var(--panel); color: var(--leaf-dark); }
+.nav-link .ico { width: 16px; text-align: center; opacity: 0.9; }
+
+.sidebar-foot {
+  margin-top: auto;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  padding-top: 14px;
+  font-size: 12px;
+  color: #B9CBB2;
+}
+
+/* ---- Main -------------------------------------------------------------- */
+
+.main {
+  padding: 26px 34px 60px;
+  max-width: 1180px;
+}
+
+.topbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 22px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.role-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--crate-line);
+  background: var(--panel);
+  color: var(--ink-soft);
+}
+.role-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--leaf); }
+
+.user-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  padding: 6px 12px 6px 6px;
+  border-radius: 999px;
+}
+.avatar {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--harvest);
+  color: var(--leaf-dark);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  display: flex; align-items: center; justify-content: center; font-size: 12px;
+}
+
+/* ==========================================================================
+   Stat strip
+   ========================================================================== */
+
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 26px;
+}
+.stat-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 14px 16px;
+}
+.stat-card .num {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.stat-card .label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.stat-card.accent-harvest .num { color: var(--harvest-dark); }
+.stat-card.accent-signal .num { color: var(--signal-dark); }
+.stat-card.accent-leaf .num { color: var(--leaf-dark); }
+
+/* ==========================================================================
+   Section headers
+   ========================================================================== */
+
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 30px 0 14px;
+}
+.section-head h2 { font-size: 19px; }
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+.btn {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 13.5px;
+  padding: 9px 16px;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-primary { background: var(--leaf); color: #fff; }
+.btn-primary:hover { background: var(--leaf-dark); }
+.btn-secondary { background: var(--panel); color: var(--ink); border-color: var(--line); }
+.btn-secondary:hover { border-color: var(--crate); }
+.btn-ghost { background: transparent; color: var(--ink-soft); border-color: transparent; padding: 9px 10px; }
+.btn-ghost:hover { color: var(--ink); }
+.btn-danger { background: var(--panel); color: var(--signal-dark); border-color: #E4C1B8; }
+.btn-danger:hover { background: #FBEFEC; }
+.btn-sm { padding: 6px 11px; font-size: 12.5px; }
+.btn:focus-visible, .nav-link:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--harvest-dark);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   Crate-tag donation card (signature element)
+   ========================================================================== */
+
+.crate-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(268px, 1fr));
+  gap: 18px;
+}
+
+.crate-tag {
+  position: relative;
+  background: var(--panel);
+  border: 1px solid var(--crate-line);
+  border-radius: var(--radius);
+  padding: 16px 16px 14px;
+  box-shadow: var(--shadow-card);
+}
+
+/* staple / punch holes to sell the "tag stapled to a crate" idea */
+.crate-tag::before,
+.crate-tag::after {
+  content: "";
+  position: absolute;
+  top: 12px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 1px solid var(--crate-line);
+}
+.crate-tag::before { left: 12px; }
+.crate-tag::after { right: 12px; }
+
+.crate-tag-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.crate-tag-food {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
+}
+.crate-tag-id {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--ink-soft);
+}
+
+.stamp {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  white-space: nowrap;
+}
+.stamp-available { color: var(--leaf-dark); background: #E7F0E3; }
+.stamp-claimed { color: var(--harvest-dark); background: #F7ECD8; }
+.stamp-completed { color: var(--ink-soft); background: var(--paper-2); }
+.stamp-cancelled { color: var(--signal-dark); background: #F6E4E0; }
+.stamp-pending { color: var(--harvest-dark); background: #F7ECD8; }
+.stamp-accepted { color: var(--leaf-dark); background: #E7F0E3; }
+.stamp-rejected { color: var(--signal-dark); background: #F6E4E0; }
+
+.crate-tag-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-bottom: 12px;
+}
+.crate-tag-meta strong { color: var(--ink); font-weight: 600; }
+
+/* freshness meter */
+.freshness {
+  margin-bottom: 12px;
+}
+.freshness-label {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--ink-soft);
+  margin-bottom: 5px;
+}
+.freshness-bar {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--paper-2);
+  overflow: hidden;
+}
+.freshness-fill { height: 100%; border-radius: 999px; }
+.freshness-fill.fresh { background: var(--leaf); }
+.freshness-fill.soon { background: var(--harvest); }
+.freshness-fill.urgent { background: var(--signal); }
+
+.crate-tag-actions {
+  display: flex;
+  gap: 8px;
+  border-top: 1px dashed var(--crate-line);
+  padding-top: 12px;
+}
+.crate-tag-actions .btn { flex: 1; justify-content: center; }
+
+/* ==========================================================================
+   Forms / panels
+   ========================================================================== */
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 20px 22px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 16px;
+}
+.form-field { display: flex; flex-direction: column; gap: 6px; }
+.form-field.full { grid-column: 1 / -1; }
+.form-field label {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+input, select, textarea {
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  padding: 9px 11px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--white);
+  color: var(--ink);
+}
+textarea { resize: vertical; min-height: 70px; }
+.form-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+/* ==========================================================================
+   Tables (admin)
+   ========================================================================== */
+
+.table-wrap {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+thead th {
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  background: var(--paper-2);
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--line);
+}
+tbody td {
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--line);
+}
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover { background: #F5F4EA; }
+.cell-mono { font-family: var(--font-mono); font-size: 12.5px; color: var(--ink-soft); }
+.row-actions { display: flex; gap: 6px; }
+
+/* ==========================================================================
+   Empty state
+   ========================================================================== */
+
+.empty-state {
+  border: 1px dashed var(--crate-line);
+  border-radius: var(--radius-lg);
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--ink-soft);
+}
+.empty-state h3 { color: var(--ink); margin-bottom: 6px; }
+
+/* ==========================================================================
+   Auth / landing (index.html)
+   ========================================================================== */
+
+.auth-wrap {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+}
+.auth-hero {
+  background: var(--leaf-dark);
+  color: #EAF1E4;
+  padding: 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+.auth-hero h1 {
+  font-size: 40px;
+  line-height: 1.08;
+  color: #fff;
+  max-width: 460px;
+}
+.auth-hero .lede {
+  max-width: 420px;
+  color: #C7D8C0;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-top: 14px;
+}
+.hero-tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+.hero-tags .stamp { border-color: rgba(255,255,255,0.35); color: #EAF1E4; background: rgba(255,255,255,0.06); }
+
+.auth-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+.auth-card {
+  width: 100%;
+  max-width: 380px;
+}
+.role-picker {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 18px 0 22px;
+}
+.role-option {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  border-radius: var(--radius);
+  padding: 12px 8px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 12.5px;
+  font-weight: 600;
+}
+.role-option.selected { border-color: var(--leaf); background: #E7F0E3; color: var(--leaf-dark); }
+.role-option .ico { display: block; font-size: 18px; margin-bottom: 6px; }
+
+@media (max-width: 900px) {
+  .auth-wrap { grid-template-columns: 1fr; }
+  .auth-hero { padding: 36px; }
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 860px) {
+  .app-shell { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+  .main { padding: 18px; }
+  .stat-strip { grid-template-columns: repeat(2, 1fr); }
+  .form-grid { grid-template-columns: 1fr; }
+}
