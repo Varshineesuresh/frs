@@ -24,15 +24,23 @@ public class FoodDonation {
 
     private String description;
 
+    // Many donations can belong to one donor
+    @ManyToOne
+    @JoinColumn(name = "donor_id", nullable = false)
+    private Donor donor;
+
     @Enumerated(EnumType.STRING)
     private FoodStatus status;
 
     private LocalDateTime createdAt;
 
+    // Default constructor
     public FoodDonation() {
         this.status = FoodStatus.AVAILABLE;
         this.createdAt = LocalDateTime.now();
     }
+
+    // Getters and Setters
 
     public Long getId() {
         return id;
@@ -88,6 +96,14 @@ public class FoodDonation {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Donor getDonor() {
+        return donor;
+    }
+
+    public void setDonor(Donor donor) {
+        this.donor = donor;
     }
 
     public FoodStatus getStatus() {
