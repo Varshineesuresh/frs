@@ -908,18 +908,16 @@ git push origin feature/your-feature
 | Contributor     | Role                      |
 | --------------- | ------------------------- |
 | Harsheni S.     | Frontend / UI Development |
-| `<Team Member>` | Backend Development       |
-| `<Team Member>` | Database / Integration    |
+| Varshinee.S | Backend Development       |
+| Shared | Database / Integration    |
 
-> Replace the placeholder names and roles with the actual project team members.
+
 
 ---
 
 # 📜 License
 
 This project is developed for **academic and educational purposes**.
-
-If a specific open-source license is required, an appropriate license such as the MIT License can be added to the repository.
 
 ---
 
