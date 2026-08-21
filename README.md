@@ -755,45 +755,7 @@ The Entity Relationship Diagram represents the database structure and relationsh
 * DONATION
 * NGO_REQUEST
 
-The ER model establishes the relationships between users, donors, NGOs, donations, administrators, and NGO requests.
 
-> Add the ER diagram image to the repository, for example:
->
-> `docs/er-diagram.png`
-
-Then display it in this README using:
-
-```markdown
-![Food Redistribution ER Diagram](docs/er-diagram.png)
-```
-
----
-
-# 📁 Recommended Repository Documentation
-
-For a more professional GitHub repository, the following structure can be used:
-
-```text
-frs/
-│
-├── demo/
-│   ├── src/
-│   ├── pom.xml
-│   └── ...
-│
-├── docs/
-│   ├── er-diagram.png
-│   ├── system-architecture.png
-│   ├── class-diagram.png
-│   └── database-design.png
-│
-├── README.md
-└── .gitignore
-```
-
-This keeps project documentation separate from the application source code.
-
----
 
 # 🚀 Future Enhancements
 
@@ -866,42 +828,7 @@ Create / Modify Feature
    Review / Integration
 ```
 
-For collaborative development, contributors can work on separate branches and merge completed features into the main branch.
 
----
-
-# 🤝 Contributing
-
-Contributions are welcome.
-
-To contribute:
-
-1. Fork the repository.
-2. Clone the repository.
-3. Create a feature branch.
-
-```bash
-git checkout -b feature/your-feature
-```
-
-4. Make your changes.
-5. Test the application.
-6. Commit your changes.
-
-```bash
-git add .
-git commit -m "Add your feature"
-```
-
-7. Push the branch.
-
-```bash
-git push origin feature/your-feature
-```
-
-8. Create a Pull Request.
-
----
 
 # 👥 Contributors
 
@@ -911,13 +838,6 @@ git push origin feature/your-feature
 | Varshinee.S | Backend Development       |
 | Shared | Database / Integration    |
 
-
-
----
-
-# 📜 License
-
-This project is developed for **academic and educational purposes**.
 
 ---
 
